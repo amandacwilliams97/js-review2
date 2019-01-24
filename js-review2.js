@@ -14,7 +14,8 @@ The == operator compares objects by identity.
   Test your function thoroughly.
  */
 function objEquals(obj1, obj2) {
-
+    Object.keys(obj1);
+    Object.keys(obj2);
 }
 
 /*
@@ -25,5 +26,15 @@ original arrays. You should utilize the
 reduce() method and the concat() method.
  */
 function flatten(arr) {
-
+    arr.reduce();
 }
+
+//Call and test functions
+//create objects
+var obj1 = "Separate Vixen.";
+var obj2 = "Separate Vixen.";
+objEquals(obj1, obj2);
+
+//create and array of arrays
+var arr = array();
+flatten(arr);
