@@ -13,7 +13,7 @@ The == operator compares objects by identity.
   Object.keys function might be useful!
   Test your function thoroughly.
  */
-function objEquals() {
+function objEquals(obj1, obj2) {
 
 }
 
