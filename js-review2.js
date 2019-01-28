@@ -26,15 +26,43 @@ original arrays. You should utilize the
 reduce() method and the concat() method.
  */
 function flatten(arr) {
-    arr.reduce();
+    var output="[";
+    for(let i=0; i<arr.length; i++) {
+        if(arr[i].isArray){
+            for(let j=0; j<arr[i].length; j++) {
+                output+= ((i==0&&j==0) ?"" : ", ")+arr[i][j];
+            }
+        }
+        else {
+            output+= arr[i];
+        }
+
+    }
+    output+="]";
+
+    console.log(output);
+
+    //why would reduce help? It only works with a function.
+    //Which I already wrote without it.
+    //var output2 = arr.reduce(console.log(),arr);
+    //console.log(output2);
 }
 
 //Call and test functions
 //create objects
+/*
 var obj1 = "Separate Vixen.";
 var obj2 = "Separate Vixen.";
+
+let obj3 = "Onyx Stone";
+let obj4 = "Stone Onyx";
+
 objEquals(obj1, obj2);
+objEquals(obj3, obj4);
+*/
 
 //create and array of arrays
-var arr = array();
+let arr = [[4,8,6], [2,7], [10,3,5,1]];
+let arr2 = [["elephant","zebra","giraffe"], ["cat","dog"], ["dolphin","shark","whale","fish"]];
 flatten(arr);
+flatten(arr2);
