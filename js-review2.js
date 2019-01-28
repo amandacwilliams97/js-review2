@@ -25,44 +25,52 @@ array that has all the elements of the
 original arrays. You should utilize the
 reduce() method and the concat() method.
  */
-function flatten(arr) {
-    var output="[";
-    for(let i=0; i<arr.length; i++) {
-        if(arr[i].isArray){
-            for(let j=0; j<arr[i].length; j++) {
-                output+= ((i==0&&j==0) ?"" : ", ")+arr[i][j];
-            }
-        }
-        else {
-            output+= arr[i];
-        }
 
+function flatten(arr) { //Reccursive Method
+    let output="";
+    for(let i=0; i<arr.length; i++) { //for each element in the outer array
+        if(arr[i].isArray){ //test if element is an array
+           flattenR(arr[i]);
+        }
+        else { //If this element isn't an array, add to output.
+            output+= ((i==0) ?"" : ",")+arr[i];
+        }
     }
-    output+="]";
-
-    console.log(output);
-
-    //why would reduce help? It only works with a function.
-    //Which I already wrote without it.
-    //var output2 = arr.reduce(console.log(),arr);
-    //console.log(output2);
+    return output;
 }
 
 //Call and test functions
-//create objects
+
+//assignment examples
 /*
-var obj1 = "Separate Vixen.";
-var obj2 = "Separate Vixen.";
+let obj = {here: {is: "an"}, object: 2};
 
-let obj3 = "Onyx Stone";
-let obj4 = "Stone Onyx";
+console.log(objEquals(obj, obj));
+// → true
 
-objEquals(obj1, obj2);
-objEquals(obj3, obj4);
+console.log(objEquals(obj, {here: 1, object: 2}));
+// → false
+
+console.log(objEquals(obj, {here: {is: "an"}, object: 2}));
+// → true
+
+console.log(objEquals(obj, {here: {is: "an"}, object: 0}));
+// → false
+
+console.log(objEquals(obj, {here: {is: "another"}, object: 2}));
+// → false
+
+console.log(objEquals(obj, {here: {isnt: "an"}, object: 2}));
+// → false
+
+console.log(objEquals(obj, {here: {is: "an", deep: {poop: null, value: -1}}, object: 2}));
+// → false
 */
+
 
 //create and array of arrays
 let arr = [[4,8,6], [2,7], [10,3,5,1]];
 let arr2 = [["elephant","zebra","giraffe"], ["cat","dog"], ["dolphin","shark","whale","fish"]];
-flatten(arr);
-flatten(arr2);
+
+console.log(flatten(arr));
+console.log(flatten(arr2));
