@@ -13,9 +13,33 @@ The == operator compares objects by identity.
   Object.keys function might be useful!
   Test your function thoroughly.
  */
-function objEquals(obj1, obj2) {
-    Object.keys(obj1);
-    Object.keys(obj2);
+function objEquals(obj1, obj2) { //NOTHING RIGHT
+    let output = true; //If no tests are wrong, objects match
+
+    let keys1= Object.keys(obj1);
+    let keys2= Object.keys(obj2);
+    let vals1= Object.values(obj1);
+    let vals2= Object.values(obj2);
+
+    if(keys1.length!==keys2.length) {
+        output=false;
+    }
+    else {
+        for(let i=0; i<keys1.length; i++) {
+            if((keys1[i]!==keys2[i])||(JSON.stringify(vals1[i])!==JSON.stringify(vals2[i]))) {
+                output = false;
+            }
+        }
+    }
+
+    /*
+    console.log(Object.keys(obj1));
+    console.log(Object.keys(obj2));
+    console.log(Object.values(obj1));
+    console.log(Object.values(obj2));
+    */
+
+    return output;
 }
 
 /*
@@ -25,24 +49,29 @@ array that has all the elements of the
 original arrays. You should utilize the
 reduce() method and the concat() method.
  */
-
-function flatten(arr) { //Reccursive Method
+function flatten(arr) { //Recursive Method
     let output="";
     for(let i=0; i<arr.length; i++) { //for each element in the outer array
         if(arr[i].isArray){ //test if element is an array
-           flattenR(arr[i]);
+           flatten(arr[i]);
         }
         else { //If this element isn't an array, add to output.
-            output+= ((i==0) ?"" : ",")+arr[i];
+            output+= ((i===0) ?"" : ",")+arr[i];
         }
     }
     return output;
 }
 
-//Call and test functions
+/*
+01234567890123456789012345678901234567890123456789012345678901234567890123456789
+//------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+80 Characters
+ */
+
+//Call and test functions ---------------------------------------------------------------
 
 //assignment examples
-/*
 let obj = {here: {is: "an"}, object: 2};
 
 console.log(objEquals(obj, obj));
@@ -65,7 +94,6 @@ console.log(objEquals(obj, {here: {isnt: "an"}, object: 2}));
 
 console.log(objEquals(obj, {here: {is: "an", deep: {poop: null, value: -1}}, object: 2}));
 // → false
-*/
 
 
 //create and array of arrays
